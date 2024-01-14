@@ -7,6 +7,6 @@ export type User = {
 };
 
 export enum UserType {
-  common = 1,
-  pro = 2
+  common = 'common',
+  pro = 'pro'
 };
