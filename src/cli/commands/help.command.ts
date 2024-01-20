@@ -3,6 +3,7 @@
 */
 
 import { Command } from './command.interface.js';
+import chalk from 'chalk';
 
 export class HelpCommand implements Command {
   public getName(): string {
@@ -10,7 +11,7 @@ export class HelpCommand implements Command {
   }
 
   public async execute(..._params: string[]): Promise<void> {
-    console.info(`
+    console.info(chalk.green(`
       Программа для подготовки данных для REST API сервера.
       Пример: cli.js --<command> [--arguments]
       Команды:
@@ -18,6 +19,6 @@ export class HelpCommand implements Command {
         --help:                         # печатает этот текст
         --import <path>:                # импортирует данные из TSV
         --generate <n> <path> <url>     # генерирует произвольное количество тестовых данных
-    `);
+    `));
   }
 }
