@@ -26,7 +26,7 @@ export class TSVFileReader implements FileReader {
       .split('\n') // разбить строки на массивы
       .filter((row) => row.trim().length > 0)
       .map((line) => line.split('\t')) // разбить массив строк на массив айтемов, разбитвх по символу табуляции
-      .map(([name, desc, createdAt, cityType, logo, photoRoom, isPrem, isFav, rating, typeOfHousing, roomCount, guestCount, price, facilities, email, avatar, pass, typeOfUser, commentCount, latitude, longitude]) => ({
+      .map(([name, desc, createdAt, cityType, logo, photoRoom, isPrem, isFav, rating, typeOfHousing, roomCount, guestCount, price, facilities, userName, email, avatar, pass, typeOfUser, commentCount, latitude, longitude]) => ({
         rentalName: name,
         descriptionOffer: desc,
         createdAt: createdAt,
@@ -42,7 +42,7 @@ export class TSVFileReader implements FileReader {
         price: Number.parseInt(price, 10),
         facilities: facilities.split(';')
           .map((item) => (item)),
-        authorOfProposal: { name: name, email: email, avatar: avatar, password: pass, userType: UserType[typeOfUser as 'common' | 'pro'] },
+        authorOfProposal: { name: userName, email: email, avatar: avatar, password: pass, userType: UserType[typeOfUser as 'common' | 'pro'] },
         commentCount: Number.parseInt(commentCount, 10),
         coordinates: { latitude, longitude }
       }));
