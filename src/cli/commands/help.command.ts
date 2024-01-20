@@ -2,7 +2,7 @@
   Команда --help возвращает информацию о доступных командах
 */
 
-import { Command } from "./command.interface.js";
+import { Command } from './command.interface.js';
 
 export class HelpCommand implements Command {
   public getName(): string {
@@ -18,6 +18,6 @@ export class HelpCommand implements Command {
         --help:                         # печатает этот текст
         --import <path>:                # импортирует данные из TSV
         --generate <n> <path> <url>     # генерирует произвольное количество тестовых данных
-    `)
+    `);
   }
 }

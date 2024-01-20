@@ -19,9 +19,9 @@ export class CommandParser {
         parsedCommand[item] = [];
         currentCommand = item;
       } else if (currentCommand && item) {
-        parsedCommand[currentCommand].push(item)
+        parsedCommand[currentCommand].push(item);
       }
-    })
+    });
     return parsedCommand;
   }
 }

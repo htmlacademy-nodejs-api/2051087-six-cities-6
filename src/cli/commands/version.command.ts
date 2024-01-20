@@ -5,9 +5,9 @@
   Метод readVersion прочитает версию приложения
 */
 
-import { Command } from "./command.interface.js";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { Command } from './command.interface.js';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 type PackageJSONConfig = {
   version: string;
@@ -39,7 +39,7 @@ export class VersionCommand implements Command {
   }
 
   public getName(): string {
-    return `--version`
+    return '--version';
   }
 
   public async execute(..._params: string[]): Promise<void> {
@@ -55,6 +55,3 @@ export class VersionCommand implements Command {
     }
   }
 }
-
-
-

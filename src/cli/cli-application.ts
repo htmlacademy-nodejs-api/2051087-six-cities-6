@@ -6,8 +6,8 @@
     - запуск нужной команды
 */
 
-import { Command } from "./commands/command.interface.js";
-import { CommandParser } from "./command-parser.js";
+import { Command } from './commands/command.interface.js';
+import { CommandParser } from './command-parser.js';
 
 // объект, где ключи - строки, а значения - тип, реализующий интерфейс Command
 type CommandCollection = Record<string, Command>;
@@ -24,21 +24,21 @@ export class CLIApplication {
   public registerCommands(commandList: Command[]): void {
     commandList.forEach((command) => {
       if (Object.hasOwn(this.commands, command.getName())) {
-        throw new Error(`Command ${command.getName()} is already registered`)
+        throw new Error(`Command ${command.getName()} is already registered`);
       }
       this.commands[command.getName()] = command;
-    })
+    });
   }
 
   public getCommand(commandName: string): Command {
-    return this.commands[commandName] ?? this.getDefaultCommand()
+    return this.commands[commandName] ?? this.getDefaultCommand();
   }
 
   public getDefaultCommand(): Command | never {
     if (!this.commands[this.defaultCommand]) {
       throw new Error(`The defult command (${this.defaultCommand}) is not registered.`);
     }
-    return this.commands[this.defaultCommand]
+    return this.commands[this.defaultCommand];
   }
 
   public proccessCommand(argv: string[]): void {
