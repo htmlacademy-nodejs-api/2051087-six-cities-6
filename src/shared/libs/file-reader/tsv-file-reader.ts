@@ -4,9 +4,9 @@
 
 import { FileReader } from './file-reader.interface.js';
 import { readFileSync } from 'node:fs';
-import { RentalOffer, User } from '../../types/index.js';
+import { City, Housing, RentalOffer, UserType } from '../../types/index.js';
 
-class TSVFileReader implements FileReader {
+export class TSVFileReader implements FileReader {
   private rawData = '';
 
   constructor(
@@ -14,7 +14,7 @@ class TSVFileReader implements FileReader {
   ) { }
 
   public read(): void {
-    this.rawData = readFileSync(this.filename, {encoding: 'utf-8'});
+    this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });
   }
 
   public toArray(): RentalOffer[] {
@@ -26,10 +26,26 @@ class TSVFileReader implements FileReader {
       .split('\n') // разбить строки на массивы
       .filter((row) => row.trim().length > 0)
       .map((line) => line.split('\t')) // разбить массив строк на массив айтемов, разбитвх по символу табуляции
-      .map(([]) => {
-        
-      });
-
+      .map(([name, desc, createdAt, cityType, logo, photoRoom, isPrem, isFav, rating, typeOfHousing, roomCount, guestCount, price, facilities, email, avatar, pass, typeOfUser, commentCount, latitude, longitude]) => ({
+        rentalName: name,
+        descriptionOffer: desc,
+        createdAt: createdAt,
+        city: City[cityType as 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf'],
+        previewLogo: logo,
+        photo: photoRoom,
+        isPremium: JSON.parse(isPrem),
+        isFavorite: JSON.parse(isFav),
+        rating: Number.parseInt(rating, 10),
+        typeOfHousing: Housing[typeOfHousing as 'apartment' | 'house' | 'room' | 'hotel'],
+        roomCount: Number.parseInt(roomCount, 10),
+        guestCount: Number.parseInt(guestCount, 10),
+        price: Number.parseInt(price, 10),
+        facilities: facilities.split(';')
+          .map((item) => (item)),
+        authorOfProposal: { name: name, email: email, avatar: avatar, password: pass, userType: UserType[typeOfUser as 'common' | 'pro'] },
+        commentCount: Number.parseInt(commentCount, 10),
+        coordinates: { latitude, longitude }
+      }));
   }
 }
 
