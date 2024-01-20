@@ -19,6 +19,7 @@ export class ImportCommand implements Command {
       console.log(FileReader.toArray());
     } catch (err) {
 
+      // не потомок Error
       if (!(err instanceof Error)) {
         throw err;
       }
