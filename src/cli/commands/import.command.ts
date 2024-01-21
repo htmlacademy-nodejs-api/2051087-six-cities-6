@@ -12,11 +12,11 @@ export class ImportCommand implements Command {
 
   public execute(...params: string[]): void {
     const [filename] = params;
-    const FileReader = new TSVFileReader(filename.trim());
+    const fileReader = new TSVFileReader(filename.trim());
 
     try {
-      FileReader.read();
-      console.log(FileReader.toArray());
+      fileReader.read();
+      console.log(fileReader.toArray());
     } catch (err) {
 
       // не потомок Error
