@@ -1,11 +1,5 @@
-import dayjs from 'dayjs';
 import { OfferGenerator } from './offer-generator.interface.js';
-import {
-  CityDesc,
-  MockServerData,
-  RentalOffer,
-  User,
-} from '../../types/index.js';
+import { CityDesc, MockServerData, User } from '../../types/index.js';
 import {
   generateRandomValue,
   getRandomItem,
