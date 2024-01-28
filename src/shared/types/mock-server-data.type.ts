@@ -1,3 +1,5 @@
+import { User } from './user.js';
+
 export type Location = {
   latitude: string,
   longitude: string
@@ -17,6 +19,12 @@ export type Rental = {
 export type MockServerData = {
   titles: string[],
   descriptions: string[],
+  createdAtDates: string[],
+  premiumStatuses: boolean[],
+  favoriteStatuses: boolean[],
+  housing: string[],
+  facilities: string[],
+  users: User[],
   cities: CityDesc[],
   rantals: Rental[],
   previews: string[],

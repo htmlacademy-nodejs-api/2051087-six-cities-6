@@ -10,6 +10,34 @@
       "Описание предложения.Минимальная длина 20 символов2",
       "Описание предложения.Минимальная длина 20 символов3"
     ],
+    "createdAtDates": [
+      "2024-01-01",
+      "2024-01-02",
+      "2024-01-03"
+    ],
+    "premiumStatuses": [
+      true,
+      false
+    ],
+    "favoriteStatuses": [
+      true,
+      false
+    ],
+    "housing": [
+      "apartment",
+      "house",
+      "room",
+      "hotel"
+    ],
+    "facilities": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
     "cities": [
       {
         "name": "Paris",
@@ -59,6 +87,29 @@
       "hotel-01.jpg",
       "hotel-02.jpg",
       "hotel-03.jpg"
+    ],
+    "users": [
+      {
+        "name": "Nick Diaz",
+        "email": "hoodieMontana1@gmail.com",
+        "avatar": "avatar1.jpg",
+        "password": "123",
+        "userType": "common"
+      },
+      {
+        "name": "Nate Diaz",
+        "email": "hoodieMontana2@gmail.com",
+        "avatar": "avatar2.jpg",
+        "password": "123",
+        "userType": "pro"
+      },
+      {
+        "name": "Jon Jones",
+        "email": "hoodieMontana3@gmail.com",
+        "avatar": "avatar3.jpg",
+        "password": "123",
+        "userType": "common"
+      }
     ],
     "names": [
       "Nick Diaz",
