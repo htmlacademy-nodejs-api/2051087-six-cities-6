@@ -5,7 +5,6 @@ import { RestConfig } from './shared/libs/config/index.js';
 async function bootstrap() {
   const logger = new PinoLogger();
   const config = new RestConfig(logger);
-  console.log('debug');
 
   const application = new RestApplication(logger, config);
   await application.init();
