@@ -23,6 +23,8 @@ export class RestApplication {
       this.config.get('DB_NAME'),
     );
 
+    this.logger.info(mongoUri);
+
     return this.databaseClient.connect(mongoUri);
   }
 
