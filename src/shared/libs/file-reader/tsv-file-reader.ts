@@ -5,6 +5,7 @@
 import { FileReader } from './file-reader.interface.js';
 import EventEmitter from 'node:events';
 import { createReadStream } from 'node:fs';
+import { resolve } from 'node:path';
 
 const CHUNK_SIZE = 16384; // 16КБ
 
@@ -31,7 +32,10 @@ export class TSVFileReader extends EventEmitter implements FileReader {
         remainingData = remainingData.slice(++nextLinePosition);
         importedRowCount++;
 
-        this.emit('line', completeRow);
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        await new Promise((resolve) => {
+          this.emit('line', completeRow, resolve);
+        });
       }
     }
     this.emit('end', importedRowCount);
