@@ -4,11 +4,13 @@ import { RestApplication } from './rest/index.js';
 import { Component } from './shared/types/index.js';
 import { createRestApplicationContainer } from './rest/rest.container.js';
 import { createUserContainer } from './shared/modules/user/user.container.js';
+import { createCategoryContainer } from './shared/modules/category/category.container.js';
 
 async function bootstrap() {
   const appContainer = Container.merge(
     createRestApplicationContainer(),
     createUserContainer(),
+    createCategoryContainer(),
   );
 
   const application = appContainer.get<RestApplication>(Component.RestApplication);
