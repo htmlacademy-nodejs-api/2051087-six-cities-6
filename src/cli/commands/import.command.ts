@@ -24,7 +24,7 @@ import { Logger } from '../../shared/libs/logger/logger.interface.js';
 import { ConsoleLogger } from '../../shared/libs/logger/console.logger.js';
 import { DefaultUserService } from '../../shared/modules/user/default-user.service.js';
 import { UserModel } from '../../shared/modules/user/user.entity.js';
-import { DEFAULT_DB_PORT, DEFAULT_USER_PASSWORD } from './command.constant.js';
+import { DEFAULT_DB_PORT } from './command.constant.js';
 import { RentalOffer } from '../../shared/types/rental-offer.js';
 
 export class ImportCommand implements Command {
@@ -62,13 +62,6 @@ export class ImportCommand implements Command {
 
   private async saveOffer(offer: RentalOffer) {
     const categories: string[] = [];
-    const user = await this.userService.findOrCreate(
-      {
-        ...offer.authorOfProposal,
-        password: DEFAULT_USER_PASSWORD,
-      },
-      this.salt
-    );
 
     for (const name of offer.facilities) {
       const existCategory =
